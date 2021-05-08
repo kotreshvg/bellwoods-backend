@@ -6,6 +6,7 @@ const usermodel=require('../models/usermodel');
 //users get req shows all users
 router.get('/',(req,res)=>{
     usermodel.find()
+    .then(console.log('user data requested'))
     .then((user)=>res.json(user));
 })
 

@@ -15,7 +15,7 @@ const { MulterError } = require('multer');
 const app=Express();
 app.use(cors());
 app.use(bodyparser.json());
-const port=8000;
+const port=process.env.port || 8000;
 
 mongoose.connect(db,
     { useNewUrlParser: true,

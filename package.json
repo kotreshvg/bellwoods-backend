@@ -1,7 +1,10 @@
 {
-  "name": "webapp",
+  "name": "bellwoods-backend",
   "version": "1.0.0",
-  "description": "just for learning",
+  "engines": {
+    "node": "v14.15.4"
+  },
+  "description": "webapp for the bellwood website data management and serving",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",

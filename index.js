@@ -8,7 +8,7 @@ const productrouter=require('./routes/product');
 const suggesstionrouter=require('./routes/suggestion');
 const requestbuild= require('./buildrequest/buildrequest');
 
-const db=key.mongoURI;
+const db=process.env.mongoURI || key.mongoURI;
 const mongoose=require('mongoose');
 const { MulterError } = require('multer');
 

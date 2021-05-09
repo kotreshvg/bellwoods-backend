@@ -1,6 +1,5 @@
 const Express= require('express');
 const bodyparser=require('body-parser');
-const key=require('./config/default.json');
 const cors=require('cors');
 
 const userrouter=require('./routes/users');
@@ -8,7 +7,7 @@ const productrouter=require('./routes/product');
 const suggesstionrouter=require('./routes/suggestion');
 const requestbuild= require('./buildrequest/buildrequest');
 
-const db=process.env.mongoURI || key.mongoURI;
+const db=process.env.mongoURI;
 const mongoose=require('mongoose');
 const { MulterError } = require('multer');
 

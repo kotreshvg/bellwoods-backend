@@ -7,7 +7,7 @@ const usermodel=require('../models/usermodel');
 router.get('/',(req,res)=>{
     usermodel.find()
     .then(console.log('user data requested'))
-    .then((user)=>res.json(user));
+    .then((user)=>res.send('youre not authorised to view this information'));
 })
 
 //get user with id

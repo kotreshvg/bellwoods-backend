@@ -7,14 +7,15 @@ const productrouter=require('./routes/product');
 const suggesstionrouter=require('./routes/suggestion');
 const requestbuild= require('./buildrequest/buildrequest');
 
-const db=process.env.PORT;
+const db=process.env.mongoURI;
+const PORT=process.env.PORT;
+
 const mongoose=require('mongoose');
 const { MulterError } = require('multer');
 
 const app=Express();
 app.use(cors());
 app.use(bodyparser.json());
-const port=process.env.port;
 
 mongoose.connect(db,
     { useNewUrlParser: true,
@@ -23,8 +24,8 @@ mongoose.connect(db,
 .then(()=>{console.log('database connected...')})
 .catch(err=>{console.log('connection failed...'); console.log(err)})
 
-app.listen(port,()=>{
-    console.log(`server listening at port ${port}...`);
+app.listen(PORT,()=>{
+    console.log(`server listening at port ${PORT}...`);
     console.log('mongodb');
 })
 app.get('/',(req,res)=>{

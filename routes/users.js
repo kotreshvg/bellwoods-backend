@@ -21,11 +21,12 @@ router.get('/:userid',(req,res)=>{
 router.post('/',(req,res)=>{
     var user=new usermodel({
         username:req.body.username,
-        age     :req.body.age,
-        password:req.body.password
+        mobile    :req.body.mobile,
+        password:req.body.password,
+        email   :req.body.email
     });
     user.save()
-    .then(user=>res.json(user));
+    .then(user=>res.send('user signup successfull...'));
 })
 
 //update existing user credentials

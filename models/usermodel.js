@@ -4,8 +4,9 @@ const schema= mongoose.Schema;
 //creating new schema
 const userschema= new schema({
     username:String,
-    age     :Number,
-    password:String
+    mobile    :Number,
+    password:String,
+    email    :String
 })
 
 var usermodel=mongoose.model('usermodel',userschema);

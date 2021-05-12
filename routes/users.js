@@ -23,10 +23,18 @@ router.post('/',(req,res)=>{
         username:req.body.username,
         mobile    :req.body.mobile,
         password:req.body.password,
-        email   :req.body.email
+        email   :req.body.email,
+        address:{
+            pin:req.body.address.pin,
+            district:req.body.address.district,
+            taluk:req.body.address.taluk,
+            city:req.body.address.city,
+            location:req.body.address.location           
+        }
     });
     user.save()
-    .then(user=>res.send('user signup successfull...'));
+    .then(user=>{res.send('user signup successfull...');
+console.log(`new user signup ${user.username}`)});
 })
 
 //update existing user credentials

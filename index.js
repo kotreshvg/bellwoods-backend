@@ -7,8 +7,8 @@ const productrouter=require('./routes/product');
 const suggesstionrouter=require('./routes/suggestion');
 const requestbuild= require('./buildrequest/buildrequest');
 
-const db=process.env.mongoURI;
-const PORT=process.env.PORT;
+const db=process.env.mongoURI || "mongodb+srv://kotresh001:icrPIZWk4055phyu@cluster0.bvrtv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const PORT=process.env.PORT || 8000;
 
 const mongoose=require('mongoose');
 const { MulterError } = require('multer');

@@ -9,6 +9,12 @@ router.get('/:productid',(req,res)=>{
     .then(product=>res.json(product))
     .catch(err=>console.error(err));
 })
+router.post('/find/',(req,res)=>{
+    productmodel.find(
+        {"material":req.body.category}, 'product_name price'
+    ).then((products)=>{res.json(products)})
+    .catch(err=>console.log(err));
+})
 
 //creating product
 router.post('/',(req,res)=>{
@@ -21,7 +27,7 @@ router.post('/',(req,res)=>{
         material    :req.body.material,
     });
     product.save()
-    .then(product=>res.json(product));
+    .then(product=>{res.send('product created...')});
 })
 
 module.exports = router;

@@ -16,6 +16,7 @@ const { MulterError } = require('multer');
 const app=Express();
 app.use(cors());
 app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:true}));
 
 mongoose.connect(db,
     { useNewUrlParser: true,

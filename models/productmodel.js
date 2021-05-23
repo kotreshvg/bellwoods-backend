@@ -8,7 +8,10 @@ const productschema= new schema({
     price   :{type:Object, required:true},
     description:String,
     category:[String],
-    material:{type:[String],required:true}
+    material:{type:[String],required:true},
+    thumbnail:String,
+    gallery:[String],
+    time_required:Number
 })
 
 var productmodel=mongoose.model('productmodel',productschema);

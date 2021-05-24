@@ -11,6 +11,7 @@ const productschema= new schema({
     material:{type:[String],required:true},
     thumbnail:String,
     gallery:[String],
+    info_file:String,
     time_required:Number
 })
 

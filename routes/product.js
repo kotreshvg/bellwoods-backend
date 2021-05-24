@@ -27,6 +27,9 @@ var imagestore=multer.diskStorage({
         if(file.fieldname==='thumbnail'){
             cb(null, 'prod_images/thumbnails/')
         }
+        else if(file.fieldname=='job_card'){
+            cb(null, 'prod_images/job_card/')
+        }
         else{
             cb(null,'prod_images/gallery/')
         }
@@ -37,7 +40,7 @@ var imagestore=multer.diskStorage({
     }
 })
 var productimg=multer({storage:imagestore});
-var image_handler=productimg.fields([{name:'thumbnail', maxCount:1},{name:'gallery', maxCount:6}]);
+var image_handler=productimg.fields([{name:'thumbnail', maxCount:1},{name:'gallery', maxCount:6},{name:'job_card',maxCount:1}]);
 //-------------------------------------------------------------------------
 //--------------------text handler to create data in db--------------------
 var id;
@@ -51,6 +54,7 @@ var productcreator=(req, res)=>{
         material    :JSON.parse(req.body.material),
         thumbnail   :req.files['thumbnail'][0].filename,
         gallery     :req.files['gallery'].map(file=>file.filename),
+        job_card   :req.files['job_card'][0].filename,
         time_required:JSON.parse(req.body.time)
     });
     product.save()

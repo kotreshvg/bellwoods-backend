@@ -13,7 +13,7 @@ router.get('/:productid',(req,res)=>{
 //responds with an array of products when asked for specific category
 router.post('/find/',(req,res)=>{
     productmodel.find(
-        {"material":req.body.category}, 'product_name price'
+        {"material":req.body.category}, 'product_name price description'
     ).then((products)=>{res.json(products)})
     .catch(err=>console.log(err));
 })

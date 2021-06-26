@@ -1,6 +1,6 @@
 const express = require('express');
 const router= express.Router();
-
+const hash_it = require('./hash_it');
 const usermodel=require('../models/usermodel');
 
 //users get req shows all users
@@ -16,13 +16,36 @@ router.get('/:userid',(req,res)=>{
     .select('username').then(name=>res.json(name))
     .catch(err=>console.error(err));
 })
+//------------------------------login user-------------------------------
+router.post('/login',(req, res)=>{
+    var password = hash_it(req.body.password, 'Belluser');
+    var username = req.body.username;
+    usermodel.find({'username' : username, 'password' : password}, {username:1})
+    .then((doc)=>{
+        console.log(doc.length)
+        if(doc.length===1){
+            res.json({
+                username : doc[0].username,
+                token : Date.now(),
+                message : 'succesfully logged in'
+            });
+        }else {
+            res.json({
+                username : null,
+                token : null,
+                message : 'failed attempt, provide authenticate details'
+            })
+        }
+    })
+})
 
 //post new user to database
-router.post('/',(req,res)=>{
+router.post('/create',(req,res)=>{
+    var hash_pass = hash_it(req.body.password, 'Belluser')
     var user=new usermodel({
         username:req.body.username,
         mobile    :req.body.mobile,
-        password:req.body.password,
+        password:hash_pass,
         email   :req.body.email,
         address:{
             pin:req.body.address.pin,

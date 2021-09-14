@@ -8,7 +8,7 @@ const suggesstionrouter=require('./routes/suggestion');
 const requestbuild= require('./buildrequest/buildrequest');
 const order = require('./routes/Orderes');
 
-const db=process.env.mongoURI || "mongodb+srv://kotresh001:icrPIZWk4055phyu@cluster0.bvrtv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const db=process.env.mongoURI ;
 const PORT=process.env.PORT || 8000;
 
 const mongoose=require('mongoose');
